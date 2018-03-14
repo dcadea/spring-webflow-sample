@@ -5,5 +5,6 @@
 </head>
 <body>
 <h1>Hello</h1>
+<a href="${flowExecutionUrl}&_eventId=mainPage">Forward</a>
 </body>
 </html>

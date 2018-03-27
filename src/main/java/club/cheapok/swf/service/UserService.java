@@ -20,7 +20,7 @@ public class UserService {
         return this.users.contains(user) ? "success" : "failed";
     }
 
-    public void createUser(final User user) {
-        this.users.add(user);
+    public String createUser(final User user) {
+        return this.users.add(user) ? "success" : "exist";
     }
 }

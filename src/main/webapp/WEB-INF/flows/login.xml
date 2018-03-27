@@ -12,7 +12,9 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
     </view-state>
 
     <subflow-state id="createUserFlow" subflow="create-user">
-        <transition on="end" to="loginForm"/>
+        <input name="user"/>
+        <transition on="userCreated" to="loginForm"/>
+        <transition on="canceled" to="loginForm"/>
     </subflow-state>
 
     <action-state id="actionCheckLogin">

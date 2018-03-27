@@ -5,17 +5,23 @@
       http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"
       start-state="createUserForm">
 
-    <var name="user" class="club.cheapok.swf.model.User"/>
+    <input name="user"/>
 
     <view-state id="createUserForm" view="create-user" model="user">
         <transition on="submit" to="createUserAction"/>
-        <transition on="cancel" to="end"/>
+        <transition on="cancel" to="canceled"/>
     </view-state>
 
     <action-state id="createUserAction">
         <evaluate expression="userService.createUser(user)"/>
-        <transition to="end"/>
+
+        <transition on="success" to="userCreated"/>
+        <transition on="exist" to="createUserForm"/>
     </action-state>
 
-    <end-state id="end"/>
+    <end-state id="userCreated">
+        <output name="user"/>
+    </end-state>
+
+    <end-state id="canceled"/>
 </flow>

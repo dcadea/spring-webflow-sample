@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Registration</title>
 </head>
 <body>
 <form:form method="POST" modelAttribute="user">
@@ -14,8 +14,8 @@
         <form:password path="password"/>
     </fieldset>
     <footer>
-        <a href="${flowExecutionUrl}&_eventId=createUser">Create user</a>
-        <input type="submit" value="Login" name="_eventId_submit"/>
+        <input type="submit" value="Cancel" name="_eventId_cancel"/>
+        <input type="submit" value="Create" name="_eventId_submit"/>
     </footer>
 </form:form>
 </body>

@@ -16,11 +16,16 @@ public class UserService {
         this.users.add(new User("user", "pass"));
     }
 
-    public String checkUser(final User user) {
-        return this.users.contains(user) ? "success" : "failed";
+    public boolean userExists(final User user) {
+        return this.users.contains(user);
     }
 
     public String createUser(final User user) {
-        return this.users.add(user) ? "success" : "exist";
+        if (this.users.stream().noneMatch(u -> u.getName().equals(user.getName()))) {
+            this.users.add(user);
+            return "success";
+        }
+
+        return "exists";
     }
 }

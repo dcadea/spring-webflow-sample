@@ -12,6 +12,9 @@
 
         <form:label path="password">Password:</form:label>
         <form:password path="password"/>
+        <c:if test="${not empty message}">
+            <span style="color: red;">${message}</span>
+        </c:if>
     </fieldset>
     <footer>
         <a href="${flowExecutionUrl}&_eventId=createUser">Create user</a>

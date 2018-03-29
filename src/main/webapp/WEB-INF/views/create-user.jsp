@@ -12,6 +12,9 @@
 
         <form:label path="password">Password:</form:label>
         <form:password path="password"/>
+        <c:if test="${not empty message}">
+            <span style="color: red;">${message}</span>
+        </c:if>
     </fieldset>
     <footer>
         <input type="submit" value="Cancel" name="_eventId_cancel"/>

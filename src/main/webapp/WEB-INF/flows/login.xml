@@ -13,15 +13,19 @@ http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd">
 
     <subflow-state id="createUserFlow" subflow="create-user">
         <input name="user"/>
-        <transition on="userCreated" to="loginForm"/>
+        <transition on="userCreated" to="loginForm">
+            <set name="flashScope.message" value="'User created!'"/>
+        </transition>
         <transition on="canceled" to="loginForm"/>
     </subflow-state>
 
     <action-state id="actionCheckLogin">
-        <evaluate expression="userService.checkUser(user)"/>
+        <evaluate expression="userService.userExists(user)"/>
 
-        <transition on="success" to="mainContent"/>
-        <transition on="failed" to="loginForm"/>
+        <transition on="yes" to="mainContent"/>
+        <transition on="no" to="loginForm">
+            <set name="flashScope.message" value="'Invalid credentials!'"/>
+        </transition>
     </action-state>
 
     <view-state id="mainContent" view="main"/>

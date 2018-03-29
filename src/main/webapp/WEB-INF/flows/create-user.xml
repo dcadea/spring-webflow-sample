@@ -16,7 +16,7 @@
         <evaluate expression="userService.createUser(user)"/>
 
         <transition on="success" to="userCreated"/>
-        <transition on="exists" to="createUserForm">
+        <transition on-exception="club.cheapok.swf.exception.UserExistsException" to="createUserForm">
             <set name="flashScope.message" value="resourceBundle.user_exists"/>
         </transition>
     </action-state>

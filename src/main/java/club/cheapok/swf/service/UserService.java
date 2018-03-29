@@ -1,5 +1,6 @@
 package club.cheapok.swf.service;
 
+import club.cheapok.swf.exception.UserExistsException;
 import club.cheapok.swf.model.User;
 import org.springframework.stereotype.Service;
 
@@ -20,12 +21,12 @@ public class UserService {
         return this.users.contains(user);
     }
 
-    public String createUser(final User user) {
+    public String createUser(final User user) throws UserExistsException {
         if (this.users.stream().noneMatch(u -> u.getName().equals(user.getName()))) {
             this.users.add(user);
             return "success";
         }
 
-        return "exists";
+        throw new UserExistsException("User exists!");
     }
 }
